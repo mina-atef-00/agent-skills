@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyYAML (frontmatter parsing; stdlib fallback exists)
+        run: pip install pyyaml
+
+      - name: Validate the skill set
+        run: python3 tools/validate_skills.py
+
+      - name: Run the validator tests
+        run: python3 -m unittest discover -s tests -v
