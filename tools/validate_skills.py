@@ -210,11 +210,14 @@ def validate_skills(root: Path) -> list[str]:
         for path in sorted(folder.rglob("*")):
             if not path.is_file():
                 continue
+            rel = str(path.relative_to(root))
             try:
                 content = path.read_text(encoding="utf-8", errors="replace")
-            except OSError:
+            except OSError as exc:
+                errors.append(
+                    f"{rel}: unreadable file could not be scanned ({exc})"
+                )
                 continue
-            rel = str(path.relative_to(root))
             for lineno, line in enumerate(content.splitlines(), start=1):
                 for pattern in _PRIVATE_PATH_PATTERNS:
                     match = pattern.search(line)

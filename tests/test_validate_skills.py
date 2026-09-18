@@ -168,6 +168,40 @@ class ValidatorTests(unittest.TestCase):
         errors = validate_skills.validate_skills(self.root)
         self.assertTrue(any("banned term" in e for e in errors))
 
+    def test_unreadable_file_is_reported_not_skipped(self):
+        folder = make_skill(
+            self.root,
+            "locked",
+            '---\nname: locked\ndescription: "ok"\n---\n\nbody\n',
+            {"secret.bin": "placeholder"},
+        )
+        locked = folder / "secret.bin"
+        os.chmod(locked, 0o000)
+        try:
+            errors = validate_skills.validate_skills(self.root)
+        finally:
+            os.chmod(locked, 0o644)
+        self.assertTrue(
+            any("unreadable" in e and "secret.bin" in e for e in errors),
+            f"unscannable file was silently skipped: {errors}",
+        )
+
+    def test_scan_continues_after_unreadable_file(self):
+        folder = make_skill(
+            self.root,
+            "locked",
+            '---\nname: locked\ndescription: "ok"\n---\n\nbody\n',
+            {"a.bin": "x", "b.md": "leak /home/alice/notes"},
+        )
+        os.chmod(folder / "a.bin", 0o000)
+        try:
+            errors = validate_skills.validate_skills(self.root)
+        finally:
+            os.chmod(folder / "a.bin", 0o644)
+        self.assertTrue(any("a.bin" in e and "unreadable" in e for e in errors))
+        self.assertTrue(any("b.md" in e and "private absolute path" in e for e in errors),
+                         "scan aborted instead of continuing past unreadable file")
+
     def test_missing_skills_dir_fails(self):
         errors = validate_skills.validate_skills(self.root)
         self.assertTrue(any("skills directory not found" in e for e in errors))
