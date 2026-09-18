@@ -3,8 +3,11 @@ name: hermes-desktop-customization
 description: "Use when patching Hermes Desktop source (titlebar, fonts)."
 version: 1.0.0
 author: Hermes Agent
-license: MIT
+license: MIT-0
 metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
   hermes:
     tags: [hermes, desktop, electron, source, customization, titlebar]
     related_skills: [hermes-desktop-plugins, hermes-agent]

@@ -3,8 +3,11 @@ name: hermes-web-tools
 description: "Use when Hermes web tools fail or need configuring."
 version: 1.0.0
 author: Hermes Agent
-license: MIT
+license: MIT-0
 metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
   hermes:
     tags: [hermes, web, web-search, web-extract, config, troubleshooting]
     related_skills: [hermes-agent]

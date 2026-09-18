@@ -6,6 +6,10 @@ description: >-
   libvirt 12.0.0, Wayland (niri on greetd). Covers hook scripts, kernel config,
   libvirt domain XML, virsh operations, and troubleshooting for single-GPU VFIO
   passthrough to a Win10 VM.
+metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
 ---
 
 # Single GPU Passthrough — the author's Setup

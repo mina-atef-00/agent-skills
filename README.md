@@ -1,6 +1,6 @@
 # agent-skills
 
-![License](https://img.shields.io/badge/license-MIT-89b4fa) ![Skills](https://img.shields.io/badge/skills-12-cba6f7) ![Tests](https://img.shields.io/badge/tests-passing-a6e3a1)
+![License](https://img.shields.io/badge/license-MIT--0-89b4fa) ![Skills](https://img.shields.io/badge/skills-12-cba6f7) ![Tests](https://img.shields.io/badge/tests-passing-a6e3a1)
 
 ![A skill working: pdf-creation generating a Unicode PDF](docs/img/banner-skill-in-action.svg)
 
@@ -55,4 +55,4 @@ layout, and how to add a skill. All of that lives in [SPEC.md](SPEC.md).
 
 ## License
 
-MIT. See `LICENSE`.
+MIT-0. See `LICENSE`.

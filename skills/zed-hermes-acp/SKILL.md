@@ -5,6 +5,9 @@ version: 0.1.0
 author: Hermes
 platforms: [linux]
 metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
   hermes:
     tags: [Zed, ACP, External Agents, IDE Integration, Hermes]
     related_skills: [hermes-agent, hermes-browsers, ai-coding-agents]

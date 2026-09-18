@@ -3,9 +3,12 @@ name: marker-pdf
 description: "Use when converting scanned PDFs or documents to markdown/JSON/HTML. Marker (Datalab) uses surya OCR for 90+ languages including Arabic."
 version: 1.0.0
 author: Hermes Agent
-license: MIT
+license: MIT-0
 platforms: [linux, macos, windows]
 metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
   hermes:
     tags: [pdf, ocr, markdown, arabic, document-conversion, surya]
     category: mlops

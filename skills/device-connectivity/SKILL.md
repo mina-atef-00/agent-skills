@@ -1,6 +1,10 @@
 ---
 name: device-connectivity
 description: Use when pairing a phone with Linux via KDE Connect.
+metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
 ---
 
 # Device Connectivity (Phone ↔ Desktop)

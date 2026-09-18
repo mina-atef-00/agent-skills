@@ -1,6 +1,12 @@
 ---
 name: flatpak-browser-open-html
 description: Open local HTML files in a flatpak browser (Zen/Vivaldi) from terminal. Plain `flatpak run` silently drops file:// URLs — use `--file-forwarding` + `@@u` instead.
+metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
+    requires:
+      bins: [flatpak]
 ---
 
 # Opening local HTML files in a flatpak browser

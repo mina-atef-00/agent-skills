@@ -4,6 +4,12 @@ description: "Wire any OpenAI-compatible LLM API into Hermes Agent as a custom p
 version: 1.0.0
 author: Hermes Agent (agent-created)
 tags: [hermes, providers, openai-compatible, custom-endpoint, configuration]
+metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
+    requires:
+      bins: [curl]
 ---
 
 # Custom LLM Provider Setup

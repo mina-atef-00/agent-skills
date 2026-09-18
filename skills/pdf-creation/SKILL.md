@@ -2,6 +2,12 @@
 name: pdf-creation
 description: fpdf2 PDF creation — Unicode-safe alternative to reportlab.
 version: 1.0.0
+metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
+    requires:
+      bins: [python3]
 ---
 
 # PDF Creation — fpdf2 Alternative

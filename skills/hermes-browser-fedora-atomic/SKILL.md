@@ -2,9 +2,12 @@
 name: hermes-browser-fedora-atomic
 version: 1.0.0
 author: Hermes Agent
-license: MIT
+license: MIT-0
 description: "Use when Hermes browser fails on Fedora Atomic / bootc."
 metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
   hermes:
     tags: [hermes, browser, chromium, fedora-atomic, bootc, playwright, agent-browser, troubleshooting, config]
 ---

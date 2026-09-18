@@ -3,6 +3,12 @@ name: starship-prompt
 description: Expert knowledge of Starship cross-shell prompt — installation, CLI, TOML config, all modules, style strings, presets, advanced features including transient prompts, custom modules, palettes, right prompt, and Fish shell integration.
 author: Hermes
 tags: [starship, prompt, fish, shell, terminal, rust, toml]
+metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
+    requires:
+      bins: [starship]
 ---
 
 # Starship Prompt — Complete Reference

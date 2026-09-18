@@ -1,6 +1,12 @@
 ---
 name: subtitle-download
 description: Batch-download missing subtitles for a media library of organized movie folders.
+metadata:
+  openclaw:
+    os: [linux]
+    homepage: https://github.com/mina-atef-00/agent-skills
+    requires:
+      bins: [subliminal]
 ---
 
 # Subtitle Download (batch, for an organized library)
