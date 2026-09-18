@@ -1,6 +1,6 @@
 # agent-skills
 
-![License](https://img.shields.io/badge/license-MIT--0-89b4fa) ![Skills](https://img.shields.io/badge/skills-12-cba6f7) ![Tests](https://img.shields.io/badge/tests-passing-a6e3a1)
+![CI](https://github.com/mina-atef-00/agent-skills/actions/workflows/ci.yml/badge.svg) ![Skills](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmina-atef-00%2Fagent-skills%2Fmain%2Fbadge.json) ![License](https://img.shields.io/badge/license-MIT--0-89b4fa)
 
 ![A skill working: pdf-creation generating a Unicode PDF](docs/img/banner-skill-in-action.svg)
 

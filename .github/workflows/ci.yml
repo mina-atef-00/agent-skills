@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   validate-and-test:
     runs-on: ubuntu-latest
@@ -21,4 +24,30 @@ jobs:
         run: python3 tools/validate_skills.py
 
       - name: Run the validator tests
-        run: python3 -m unittest discover -s tests -v
+        run: python3 -m unittest discover -s tests
+
+      - name: Write badge.json
+        id: badge
+        run: |
+          count=$(find skills -mindepth 1 -maxdepth 1 -type d | wc -l)
+          printf '{"schemaVersion":1,"label":"skills","message":"%s","color":"cba6f7"}\n' "$count" > badge.json
+          previous=$(git cat-file -p "HEAD:badge.json" 2>/dev/null | grep -o '"message":"[0-9]*"' | grep -o '[0-9]*' || true)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "previous=${previous:-0}" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push badge.json when the count changed
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          if [ "${{ steps.badge.outputs.count }}" = "${{ steps.badge.outputs.previous }}" ] && [ -f badge.json ] && git cat-file -e "HEAD:badge.json" 2>/dev/null; then
+            echo "skills count unchanged; nothing to push"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add badge.json
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -m "chore: update skills count badge"
+          git push origin HEAD:"$GITHUB_REF_NAME"
