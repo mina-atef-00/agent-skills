@@ -1,18 +1,18 @@
 ---
 name: subtitle-download
-description: Batch-download missing subtitles for a movie library.
+description: Batch-download missing subtitles for a media library of organized movie folders.
 ---
 
 # Subtitle Download (batch, for an organized library)
 
-This user keeps movies as `Movie Title (Year)/Movie Title (Year) [Quality Codec].ext` + a matching
+The library keeps each movie as `Movie Title (Year)/Movie Title (Year) [Quality Codec].ext` + a matching
 `Movie Title (Year) [Quality Codec].srt` (same stem). The job is to fill the missing `.srt` files
 without breaking that exact-stem rule.
 
 ## Working approach (Podman + Subliminal)
 
 Subliminal is the right tool: async provider pool, hash + guessit filename matching, 7 providers,
-saves `.srt` next to the video. On THIS user's system run it under **Podman** (not Docker — see Pitfalls).
+saves `.srt` next to the video. Run it under **Podman** on a Fedora Atomic host (not Docker — see Pitfalls).
 
 Exact-stem matching requires a 3-step dance, because Subliminal writes `Name.en.srt` (with a
 language suffix) and will otherwise re-download movies that already have subs:
@@ -22,7 +22,7 @@ language suffix) and will otherwise re-download movies that already have subs:
    `OSError: [Errno 30] Read-only file system` at save time, after doing all the network work).
 3. **Strip the `.en` suffix** from every `.srt` afterward so filenames match the video stems exactly.
 
-See `scripts/run_subliminal.sh` (parameterized, does all three) and `references/research-summary.md`.
+See `scripts/run_subliminal.sh` (parameterized, does all three) and `references/workflow-podman.md`.
 
 ## Converting stray formats
 
@@ -51,7 +51,7 @@ So a single Subliminal pass leaves ~40% of a library without subs. To close the 
 
 ## Pitfalls
 
-- **Podman, not Docker.** This user is on Fedora Atomic with Podman. Swap `docker` → `podman`;
+- **Podman, not Docker.** The target machine is a Fedora Atomic host with Podman. Swap `docker` → `podman`;
   CLI is compatible. Never suggest layering Docker via rpm-ostree.
 - **Mount must be RW** for Subliminal to save. (`:ro` fails late and wastes the whole run.)
 - **Subliminal writes `Name.en.srt`** — strip `.en` after, or your exact-stem convention breaks.

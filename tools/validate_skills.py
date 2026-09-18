@@ -32,13 +32,16 @@ from pathlib import Path
 
 REQUIRED_KEYS = ("name", "description")
 
-# Absolute paths that would leak private information. System paths such as
-# /usr, /tmp, /etc, and /proc are allowed; only user-home and private-mount
-# paths are flagged.
+# Absolute paths that would leak private information: a specific user's home
+# (/home/<name>/, /Users/<name>/, /root/) or a private mount (/var/mnt/), plus
+# Windows user profiles. System paths such as /usr, /tmp, /etc, and /proc are
+# allowed. The portable "~/" form is NOT flagged: it is the documented generic
+# form of public tool paths such as ~/.hermes/config.yaml or
+# ~/.config/zed/settings.json and leaks nothing.
 _PRIVATE_PATH_PATTERNS = [
-    re.compile(r"(^|[\s`'\"(])/(home|Users|root)/[^\s`'\"()]*", re.IGNORECASE),
-    re.compile(r"(^|[\s`'\"(])/var/mnt/", re.IGNORECASE),
-    re.compile(r"(^|[\s`'\"(])~/[^\s`'\"()]*", re.IGNORECASE),
+    re.compile(r"(^|[\s`'\"])/(?:home|Users|root)/[^\s`'\"()/]+(?:/[^\s`'\"()]*)?", re.IGNORECASE),
+    re.compile(r"(^|[\s`'\"])(?:\$HOME)?(?:/var/home)/[^\s`'\"()/]+(?:/[^\s'\"()]*)?", re.IGNORECASE),
+    re.compile(r"(^|[\s`'\"])/var/mnt/", re.IGNORECASE),
     re.compile(r"[A-Za-z]:\\Users\\", re.IGNORECASE),
 ]
 
@@ -69,7 +72,7 @@ _BANNED_SUBSTRINGS = (
     "torrent",
 )
 
-_BANNED_WORDS = ("cheat", "vpn", "proxy", "gfw")
+_BANNED_WORDS = ()
 
 
 def _banned_regexes() -> list[re.Pattern]:

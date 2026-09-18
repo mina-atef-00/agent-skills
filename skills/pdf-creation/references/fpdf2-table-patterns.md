@@ -77,7 +77,7 @@ pdf.add_font("DJS", "B", f"{FONT_DIR}/DejaVuSans-Bold.ttf")
 pdf.set_margins(20, 18, 20)
 pdf.add_page()
 pdf.set_font("DJS", "B", 14)
-pdf.cell(0, 8, "Interaction Table")
+pdf.cell(0, 8, "Module Reference Table")
 pdf.ln(12)
 
 hdr = FontFace(family="DJS", emphasis="BOLD", size_pt=8,
@@ -85,10 +85,10 @@ hdr = FontFace(family="DJS", emphasis="BOLD", size_pt=8,
 cell = FontFace(family="DJS", emphasis="", size_pt=7.5, color=(26,32,44))
 
 data = [
-    ["Drug Class",   "Drugs",               "Effect"],
-    ["Immunosuppressants", "Cyclosporine",   "Reduced concentration"],
-    ["Anticoagulants",    "Warfarin",        "Reduced INR"],
-    ["Oral Contraceptives","Estradiol combos","Reduced efficacy"],
+    ["Module",   "Function",     "Returns"],
+    ["os.path",  "join",         "str"],
+    ["json",     "loads",        "dict"],
+    ["datetime", "today()",      "date object"],
 ]
 
 with pdf.table(
@@ -107,5 +107,5 @@ with pdf.table(
         for t in row_data:
             r.cell(t, style=cell)
 
-pdf.output("interaction_table.pdf")
+pdf.output("reference_table.pdf")
 ```

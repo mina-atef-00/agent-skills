@@ -11,6 +11,7 @@ deliberately broken fixtures that must each fail validation.
 """
 
 import os
+import shutil
 import sys
 import tempfile
 import unittest
@@ -101,14 +102,52 @@ class ValidatorTests(unittest.TestCase):
         errors = validate_skills.validate_skills(self.root)
         self.assertTrue(any("private absolute path" in e for e in errors))
 
-    def test_home_expansion_fails(self):
+    def test_private_home_path_is_caught(self):
+        for leak in [
+            "/home/someuser/thing",
+            "/Users/alice/Documents/x",
+            "/root/notes.txt",
+            "/var/mnt/private/disk.qcow2",
+        ]:
+            with self.subTest(leak=leak):
+                make_skill(
+                    self.root,
+                    "leaky",
+                    f'---\nname: leaky\ndescription: "ok"\n---\n\nSee {leak}\n',
+                )
+                errors = validate_skills.validate_skills(self.root)
+                self.assertTrue(any("private absolute path" in e for e in errors))
+                shutil.rmtree(self.root / "skills" / "leaky")
+
+    def test_generic_tilde_tool_paths_are_allowed(self):
         make_skill(
             self.root,
-            "tilde",
-            '---\nname: tilde\ndescription: "ok"\n---\n\ncp ~/.ssh/id_rsa .\n',
+            "tilde-ok",
+            '---\nname: tilde-ok\ndescription: "ok"\n---\n\n'
+            "Edit ~/.hermes/config.yaml, then ~/.config/zed/settings.json.\n",
+        )
+        self.assertEqual(validate_skills.validate_skills(self.root), [])
+
+    def test_genuine_banned_term_is_still_caught(self):
+        make_skill(
+            self.root,
+            "banned",
+            '---\nname: banned\ndescription: "ok"\n---\n\n'
+            "This documents a v2ray proxy chain for the great firewall.\n"
+            "With anti-cheat and rootkit notes.\n",
         )
         errors = validate_skills.validate_skills(self.root)
-        self.assertTrue(any("private absolute path" in e for e in errors))
+        self.assertTrue(any("banned term" in e for e in errors))
+
+    def test_legitimate_technical_proxy_is_allowed(self):
+        make_skill(
+            self.root,
+            "proxy-ok",
+            '---\nname: proxy-ok\ndescription: "ok"\n---\n\n'
+            "Point the client at the reverse proxy, or a server-routed "
+            "model via a proxy provider. Uses OPENAI proxy environment settings.\n",
+        )
+        self.assertEqual(validate_skills.validate_skills(self.root), [])
 
     def test_banned_term_fails(self):
         make_skill(

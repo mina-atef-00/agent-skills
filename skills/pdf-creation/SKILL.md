@@ -79,7 +79,7 @@ with pdf.table(col_widths=[42,50,84], text_align="LEFT",
     first_row_as_headings=True, headings_style=hdr, width=170,
     borders_layout="MINIMAL", cell_fill_color=(247,250,252),
     cell_fill_mode="ROWS", line_height=4.5) as tbl:
-    for row in [["Class","Drug","Effect"],["A","X","Reduced"]]:
+    for row in [["Module","Function","Returns"],["os.path","join","str"]]:
         r = tbl.row()
         for t in row:
             r.cell(t, style=cell)

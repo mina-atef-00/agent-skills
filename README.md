@@ -22,21 +22,36 @@ and dies inside one conversation.
 
 ## What is in this repo
 
+This is a personal selection of 12 skill folders, not a general-purpose
+library. Every skill here came out of real work on the author's own Fedora
+Atomic workstation: single-GPU VFIO passthrough, immutable-OS browser fixes,
+Zed and agent integration, OCR for scanned Arabic PDFs, flatpak quirks,
+subtitles, PDFs. Each one documents a problem that was actually hit, including
+the failure modes and error strings earned along the way.
+
 | Skill | What it does |
 |---|---|
-| `brainstormer` | Ideation via SCAMPER, reverse brainstorming, and analogies |
-| `design-thinker` | The five-stage human-centered design process |
-| `lateral-thinker` | Six Thinking Hats, random entry, and deliberate creativity |
-| `mythmaker` | Hero's journey stages and the twelve archetypes for narrative |
+| `custom-llm-provider-setup` | Wire any OpenAI-compatible LLM API into the agent as a custom provider |
+| `device-connectivity` | Pair phones and transfer files on an immutable desktop (KDE Connect, Valent) |
+| `flatpak-browser-open-html` | Open local HTML files in a flatpak browser and fix the default-handler trap |
+| `hermes-browser-fedora-atomic` | Diagnose and fix browser backends failing on Fedora Atomic / bootc |
+| `hermes-desktop-customization` | Customize the desktop app source safely (fonts, branches, update flow) |
+| `hermes-web-tools` | How the web search and extract tools pick backends, and how to debug them |
+| `marker-pdf` | Convert scanned PDFs, especially Arabic and RTL, to markdown, and clean up OCR output |
 | `pdf-creation` | Unicode-safe PDFs with fpdf2 when reportlab is not an option |
-| `polymath` | Cross-disciplinary synthesis and a latticework of mental models |
-| `presenter` | Slide hierarchy, the three-second rule, and data visualization |
-| `provocateur` | Surrealist techniques for breaking creative blocks |
-| `roundtable` | Facilitate a multi-persona discussion and synthesize the output |
-| `storyteller` | Three-act structure, the hero's journey, and emotional arcs |
-| `strategist` | Jobs-to-be-done, blue ocean strategy, and disruption diagnosis |
-| `subtitle-download` | Batch-download missing subtitles for a movie library |
-| `visionary` | Product vision, intersection thinking, and taste as a filter |
+| `single-gpu-passthrough` | Single-GPU VFIO passthrough to a Windows VM on Fedora bootc (QEMU/libvirt hooks) |
+| `starship-prompt` | Starship cross-shell prompt reference with tested Fish config and TOML pitfalls |
+| `subtitle-download` | Batch-download missing subtitles for a media library with Subliminal under Podman |
+| `zed-hermes-acp` | Wire the agent into the Zed editor as an ACP external agent, native or Flatpak |
+
+## Where these skills come from
+
+A skill is included here only when there is positive evidence the owner wrote
+it: a specific quirk, version pitfall, or error message that only turns up
+from having done the work on this machine, or a demonstrable authoring record.
+Skills shipped with an agent, attributed to a third party, or arriving as a
+generic pack are left out, and authorship is never asserted where the evidence
+does not support it.
 
 Each skill lives at `skills/<name>/SKILL.md`. Supporting files, where a skill
 has them, sit next to it in the same folder.

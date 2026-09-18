@@ -1,5 +1,6 @@
 #!/bin/bash
-# Podman-based Subliminal batch subtitle download for an organized movie library.
+# Podman-based Subliminal batch subtitle download for a media library of organized
+# movie folders.
 # Mounts RW (subliminal must write). Pre-existing subs are tagged .en.srt so they're
 # skipped; new downloads get .en.srt too, then we strip .en for exact-stem matching.
 #
