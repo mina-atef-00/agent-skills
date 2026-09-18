@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg width="635.00" height="167.00" xmlns="http://www.w3.org/2000/svg">
+<svg width="793.33" height="268.00" xmlns="http://www.w3.org/2000/svg">
 <style>
 @font-face {
 	font-family: &apos;JetBrains Mono&apos;;
@@ -8,8 +8,8 @@
 	font-weight: normal;
 	font-style: normal;
 }
-</style><rect width="635.00" height="167.00" fill="#1e1e2e" x="0.00px" y="0.00px"/>
+</style><rect width="793.33" height="268.00" fill="#1e1e2e" x="0.00px" y="0.00px"/>
 <g font-family="JetBrains Mono" font-size="14.00px" fill="#cdd6f4" clip-path="url(#terminalMask)">
-<text x="20.00px" y="36.80px" xml:space="preserve"><tspan xml:space="preserve">/tmp/skill-demo/hello.pdf, 1 page</tspan></text><text x="20.00px" y="53.60px" xml:space="preserve"><tspan xml:space="preserve">-rw-r--r--. 1 mina mina 15002 Sep 18 23:28 /tmp/skill-demo/hello.pdf</tspan></text><text x="20.00px" y="70.40px" xml:space="preserve"><tspan xml:space="preserve">pages: 1</tspan></text><text x="20.00px" y="87.20px" xml:space="preserve"><tspan xml:space="preserve">Skill demo</tspan></text><text x="20.00px" y="104.00px" xml:space="preserve"><tspan xml:space="preserve">Hermes skills work from the terminal.</tspan></text><text x="20.00px" y="120.80px" xml:space="preserve"><tspan xml:space="preserve">المهارات تعمل من الطرفية</tspan></text>
+<text x="20.00px" y="36.80px" xml:space="preserve"><tspan xml:space="preserve">$ hermes skills list | grep pdf-creation</tspan></text><text x="20.00px" y="53.60px" xml:space="preserve"><tspan xml:space="preserve">│ pdf-creation          │                      │ local    │ local    │ enabled │</tspan></text><text x="20.00px" y="70.40px" xml:space="preserve"/><text x="20.00px" y="87.20px" xml:space="preserve"><tspan xml:space="preserve">$ hermes -z &quot;Load the pdf-creation skill... create hello2.pdf...&quot; --skills pdf-creation</tspan></text><text x="20.00px" y="104.00px" xml:space="preserve"><tspan xml:space="preserve">/tmp/hello2.pdf, 1 page</tspan></text><text x="20.00px" y="120.80px" xml:space="preserve"/><text x="20.00px" y="137.60px" xml:space="preserve"><tspan xml:space="preserve">$ ls -l /tmp/hello2.pdf &amp;&amp; verify text</tspan></text><text x="20.00px" y="154.40px" xml:space="preserve"><tspan xml:space="preserve">-rw-r--r--. 1 mina mina 14164 Sep 19 00:09 /tmp/hello2.pdf</tspan></text><text x="20.00px" y="171.20px" xml:space="preserve"><tspan xml:space="preserve">pages: 1</tspan></text><text x="20.00px" y="188.00px" xml:space="preserve"><tspan xml:space="preserve">Skill demo</tspan></text><text x="20.00px" y="204.80px" xml:space="preserve"><tspan xml:space="preserve">Hermes skills work from the terminal.</tspan></text><text x="20.00px" y="221.60px" xml:space="preserve"><tspan xml:space="preserve">Install: clawhub install @mina-atef-00/pdf-creation</tspan></text>
 </g>
 </svg>
