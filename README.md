@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-89b4fa) ![Skills](https://img.shields.io/badge/skills-12-cba6f7) ![Tests](https://img.shields.io/badge/tests-passing-a6e3a1)
 
-![Validator and test suite passing](docs/img/banner-validation.svg)
+![A skill working: pdf-creation generating a Unicode PDF](docs/img/banner-skill-in-action.svg)
 
 ## Why install this
 
