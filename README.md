@@ -1,102 +1,59 @@
 # agent-skills
 
-A curated set of agent skills, each a single markdown file an agent loads when
-a task matches it. These are written as reusable tooling: copy a folder into an
-agent that understands the SKILL.md convention and it starts working.
+![License](https://img.shields.io/badge/license-MIT-89b4fa) ![Skills](https://img.shields.io/badge/skills-12-cba6f7) ![Tests](https://img.shields.io/badge/tests-passing-a6e3a1)
 
-## What a skill file is
+## Why install this
 
-A skill is a markdown document with a YAML frontmatter block and a body. The
-frontmatter carries a `name` and a `description`. The body is the procedure.
+This is a pack of 12 skills for coding agents like Hermes: each one is a single
+markdown file the agent loads only when a task matches it. When it doesn't
+match, the body never enters the context window, so the pack costs nothing
+until it earns its place. Every skill documents work actually done on the
+author's Fedora Atomic machine, including the error strings and version
+pitfalls that turn up along the way. If you run a similar setup, the shortcuts
+are already written down.
 
-An agent that supports skill files reads the description first, decides whether
-the skill applies to the current task, and only then loads the body. When the
-skill does not apply, it costs nothing: the body never enters the context
-window.
+## What is in the box
 
-That is the difference between a skill and a prompt pasted into chat. A pasted
-prompt is always present, always taking up context, whether or not it is
-relevant. A skill file is loaded on demand. The same document also survives as
-a file you can version, review, diff, and share, where a pasted prompt lives
-and dies inside one conversation.
-
-## What is in this repo
-
-This is a personal selection of 12 skill folders, not a general-purpose
-library. Every skill here came out of real work on the author's own Fedora
-Atomic workstation: single-GPU VFIO passthrough, immutable-OS browser fixes,
-Zed and agent integration, OCR for scanned Arabic PDFs, flatpak quirks,
-subtitles, PDFs. Each one documents a problem that was actually hit, including
-the failure modes and error strings earned along the way.
-
-| Skill | What it does |
+| Skill | What you get |
 |---|---|
-| `custom-llm-provider-setup` | Wire any OpenAI-compatible LLM API into the agent as a custom provider |
-| `device-connectivity` | Pair phones and transfer files on an immutable desktop (KDE Connect, Valent) |
-| `flatpak-browser-open-html` | Open local HTML files in a flatpak browser and fix the default-handler trap |
-| `hermes-browser-fedora-atomic` | Diagnose and fix browser backends failing on Fedora Atomic / bootc |
-| `hermes-desktop-customization` | Customize the desktop app source safely (fonts, branches, update flow) |
-| `hermes-web-tools` | How the web search and extract tools pick backends, and how to debug them |
-| `marker-pdf` | Convert scanned PDFs, especially Arabic and RTL, to markdown, and clean up OCR output |
-| `pdf-creation` | Unicode-safe PDFs with fpdf2 when reportlab is not an option |
-| `single-gpu-passthrough` | Single-GPU VFIO passthrough to a Windows VM on Fedora bootc (QEMU/libvirt hooks) |
-| `starship-prompt` | Starship cross-shell prompt reference with tested Fish config and TOML pitfalls |
-| `subtitle-download` | Batch-download missing subtitles for a media library with Subliminal under Podman |
-| `zed-hermes-acp` | Wire the agent into the Zed editor as an ACP external agent, native or Flatpak |
+| `custom-llm-provider-setup` | Point your agent at any OpenAI-compatible endpoint (Ollama, vLLM, LM Studio, Workers AI) without guesswork |
+| `device-connectivity` | Pair your phone with a Linux desktop over KDE Connect and move files between them |
+| `flatpak-browser-open-html` | Open local HTML files in a flatpak browser, and understand why plain `flatpak run` drops file URLs |
+| `hermes-browser-fedora-atomic` | Get the agent's browser working again on Fedora Atomic / bootc when it breaks |
+| `hermes-desktop-customization` | Patch the desktop app's fonts and titlebar without breaking updates |
+| `hermes-web-tools` | Understand which backend the web search and extract tools pick, and what to fix when they fail |
+| `marker-pdf` | Scanned PDFs, Arabic and RTL included, converted to clean markdown with OCR corrected afterwards |
+| `pdf-creation` | Produce Unicode-safe PDFs with fpdf2, including crossed-out text, when reportlab is not an option |
+| `single-gpu-passthrough` | Hand your only GPU to a Windows VM and back again, with libvirt hooks tuned for Fedora bootc |
+| `starship-prompt` | A working Starship prompt setup across bash, zsh and Fish, with the TOML traps already handled |
+| `subtitle-download` | Fill in missing subtitles for a whole movie library in one pass, under Podman |
+| `zed-hermes-acp` | Wire the agent into the Zed editor via the Agent Client Protocol, Flatpak included |
 
-## Where these skills come from
+## Install
 
-A skill is included here only when there is positive evidence the owner wrote
-it: a specific quirk, version pitfall, or error message that only turns up
-from having done the work on this machine, or a demonstrable authoring record.
-Skills shipped with an agent, attributed to a third party, or arriving as a
-generic pack are left out, and authorship is never asserted where the evidence
-does not support it.
+Copy the skill folders into wherever your agent keeps them. On Hermes Agent,
+each folder goes under `~/.hermes/skills/<name>/` (a category subfolder also
+works), and you load a skill by name with the skill-view tool. Any agent that
+follows the same `SKILL.md` convention reads these files the same way.
 
-Each skill lives at `skills/<name>/SKILL.md`. Supporting files, where a skill
-has them, sit next to it in the same folder.
+To look at a skill before installing it, read its `SKILL.md`: the description
+in the frontmatter tells you when it fires, and the body is the procedure.
+Browsing is just `cat skills/<name>/SKILL.md`.
 
-## Installing and using these
+## Proof it works
 
-Copy the `skills/` directory into your agent's skill directory. The target
-path depends on the agent:
+The validator checks the whole pack, and the test suite covers the same
+checks. Both screenshots show real output from real commands run in this repo.
 
-* Hermes Agent: drop each folder under `~/.hermes/skills/<name>/` (a category
-  subfolder also works), then load it with the skill view tool by name.
-* Any agent that follows the same convention (a `SKILL.md` with `name` and
-  `description` frontmatter): drop the folder into that agent's skills or
-  commands directory.
+![Validator output](docs/img/validator.svg)
 
-The file format is the common part. YAML frontmatter with a name and a
-description, markdown body after it. If your agent can read that, it can use
-these skills.
+![Test suite output](docs/img/tests.svg)
 
-A skill only fires when its description matches the task. To write your own,
-copy an existing folder, change the name, description, and body, then run the
-validator.
+## Spec
 
-## Validation
-
-`tools/validate_skills.py` checks every folder under `skills/` for:
-
-* a `SKILL.md` file
-* YAML frontmatter with a non-empty `name` and `description`
-* no absolute private paths (user home directories, private mounts)
-* no banned terms (cheating, security, circumvention, piracy, account
-  generation)
-
-Run it with:
-
-```bash
-python3 tools/validate_skills.py
-```
-
-It prints `OK` and exits 0 when everything passes, or lists every problem and
-exits non-zero. The test suite covers the same checks:
-
-```bash
-python3 -m unittest discover -s tests -v
-```
+How the pack stays consistent: what the validator checks, what counts as
+enough authorship for a skill to be included, the file format, the test
+layout, and how to add a skill. All of that lives in [SPEC.md](SPEC.md).
 
 ## License
 
