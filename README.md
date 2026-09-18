@@ -2,6 +2,8 @@
 
 ![License](https://img.shields.io/badge/license-MIT-89b4fa) ![Skills](https://img.shields.io/badge/skills-12-cba6f7) ![Tests](https://img.shields.io/badge/tests-passing-a6e3a1)
 
+![Validator and test suite passing](docs/img/banner-validation.svg)
+
 ## Why install this
 
 This is a pack of 12 skills for coding agents like Hermes: each one is a single
@@ -43,11 +45,7 @@ Browsing is just `cat skills/<name>/SKILL.md`.
 ## Proof it works
 
 The validator checks the whole pack, and the test suite covers the same
-checks. Both screenshots show real output from real commands run in this repo.
-
-![Validator output](docs/img/validator.svg)
-
-![Test suite output](docs/img/tests.svg)
+checks. The banner at the top shows real output from real commands run in this repo.
 
 ## Spec
 
