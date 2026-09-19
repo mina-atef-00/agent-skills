@@ -16,20 +16,22 @@ are already written down.
 
 ## What is in the box
 
+All 12 are published on [ClawHub](https://clawhub.ai/mina-atef-00), the skills registry: `clawhub install @mina-atef-00/<name>`.
+
 | Skill | What you get |
 |---|---|
-| `custom-llm-provider-setup` | Point your agent at any OpenAI-compatible endpoint (Ollama, vLLM, LM Studio, Workers AI) without guesswork |
-| `device-connectivity` | Pair your phone with a Linux desktop over KDE Connect and move files between them |
-| `flatpak-browser-open-html` | Open local HTML files in a flatpak browser, and understand why plain `flatpak run` drops file URLs |
-| `hermes-browser-fedora-atomic` | Get the agent's browser working again on Fedora Atomic / bootc when it breaks |
-| `hermes-desktop-customization` | Patch the desktop app's fonts and titlebar without breaking updates |
-| `hermes-web-tools` | Understand which backend the web search and extract tools pick, and what to fix when they fail |
-| `marker-pdf` | Scanned PDFs, Arabic and RTL included, converted to clean markdown with OCR corrected afterwards |
-| `pdf-creation` | Produce Unicode-safe PDFs with fpdf2, including crossed-out text, when reportlab is not an option |
-| `single-gpu-passthrough` | Hand your only GPU to a Windows VM and back again, with libvirt hooks tuned for Fedora bootc |
-| `starship-prompt` | A working Starship prompt setup across bash, zsh and Fish, with the TOML traps already handled |
-| `subtitle-download` | Fill in missing subtitles for a whole movie library in one pass, under Podman |
-| `zed-hermes-acp` | Wire the agent into the Zed editor via the Agent Client Protocol, Flatpak included |
+| [custom-llm-provider-setup](https://clawhub.ai/mina-atef-00/skills/custom-llm-provider-setup) | Point your agent at any OpenAI-compatible endpoint (Ollama, vLLM, LM Studio, Workers AI) without guesswork |
+| [device-connectivity](https://clawhub.ai/mina-atef-00/skills/device-connectivity) | Pair your phone with a Linux desktop over KDE Connect and move files between them |
+| [flatpak-browser-open-html](https://clawhub.ai/mina-atef-00/skills/flatpak-browser-open-html) | Open local HTML files in a flatpak browser, and understand why plain `flatpak run` drops file URLs |
+| [hermes-browser-fedora-atomic](https://clawhub.ai/mina-atef-00/skills/hermes-browser-fedora-atomic) | Get the agent's browser working again on Fedora Atomic / bootc when it breaks |
+| [hermes-desktop-customization](https://clawhub.ai/mina-atef-00/skills/hermes-desktop-customization) | Patch the desktop app's fonts and titlebar without breaking updates |
+| [hermes-web-tools](https://clawhub.ai/mina-atef-00/skills/hermes-web-tools) | Understand which backend the web search and extract tools pick, and what to fix when they fail |
+| [marker-pdf](https://clawhub.ai/mina-atef-00/skills/marker-pdf) | Scanned PDFs, Arabic and RTL included, converted to clean markdown with OCR corrected afterwards |
+| [pdf-creation](https://clawhub.ai/mina-atef-00/skills/pdf-creation) | Produce Unicode-safe PDFs with fpdf2, including crossed-out text, when reportlab is not an option |
+| [single-gpu-passthrough](https://clawhub.ai/mina-atef-00/skills/single-gpu-passthrough) | Hand your only GPU to a Windows VM and back again, with libvirt hooks tuned for Fedora bootc |
+| [starship-prompt](https://clawhub.ai/mina-atef-00/skills/starship-prompt) | A working Starship prompt setup across bash, zsh and Fish, with the TOML traps already handled |
+| [subtitle-download](https://clawhub.ai/mina-atef-00/skills/subtitle-download) | Fill in missing subtitles for a whole movie library in one pass, under Podman |
+| [zed-hermes-acp](https://clawhub.ai/mina-atef-00/skills/zed-hermes-acp) | Wire the agent into the Zed editor via the Agent Client Protocol, Flatpak included |
 
 ## Install
 
